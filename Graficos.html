@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="br-pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graficos de Temperatura e Umidade</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chart {
+        width: 600px;
+        height: 400px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Grafico de Linhas</h1>
+        <div class="chart">
+            <canvas id="Temp" class="charts"></canvas>
+        </div>
+        <h1>Grafico de Barras</h1>
+        <div class="chart">
+            <canvas id="umidade"></canvas>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    const temperatura = document.getElementById('Temp');
+    const umidade = document.getElementById('umidade');
+
+    new Chart(temperatura, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [
+                {
+                    label: 'Temperatura Média (C°)',
+                    data: [30, 29, 28, 25, 22, 23],
+                    borderColor: '#D06A5A',
+                    borderWidth: 10,
+                    backgroundColor: 'rgb(163, 59, 44)',
+                },
+                {
+                    label: 'Umidade Média (%)',
+                    data: [80, 82, 80, 85, 80, 83],
+                    borderWidth: 10,
+                    backgroundColor: 'rgb(112, 22, 14)',
+                    borderColor: '#70160E',
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(umidade, {
+        type: 'bar',
+        data: {
+            labels: ['janeiro', 'fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [
+                {
+                    label: 'Temperatura Média (C°)',
+                    data: [22, 24, 27, 23, 20, 18],
+                    borderColor: '#FF6384',
+                    borderWidth: 1,
+                    backgroundColor: '#D06A5A',
+                },
+                {
+                    label: 'Umidade Média (%)',
+                    data: [90, 89, 93, 87, 88, 82],
+                    borderWidth: 1,
+                    backgroundColor: 'rgb(112, 22, 14)',
+                    borderColor: '#FF6384',
+
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
